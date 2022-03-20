@@ -140,7 +140,7 @@ _Coming soon!_
 </details>
 
 <details>
-<summary>7. Setup CI/CD</summary>
+<summary>8. Setup CI/CD</summary>
 
 _Coming soon!_
 
