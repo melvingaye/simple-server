@@ -5,6 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"tsc": "tsc --watch",
+		"format": "npx prettier --write src/**/*.ts",
+		"lint": "eslint --ext .js,.ts .",
+		"fix": "npm run lint -- --fix",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
