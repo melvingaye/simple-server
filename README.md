@@ -120,12 +120,12 @@ V. Add configuration options to the config file. It should look something like t
 
 <details>
 <summary>5. Add Commit lint</summary>
-*Coming soon!*
+*Coming soon*
 </details>
 
 <details>
 <summary>6. Add Dependabot</summary>
-*Coming soon!*
+*Coming soon*
 </details>
 
 <details>
@@ -135,5 +135,5 @@ V. Add configuration options to the config file. It should look something like t
 
 <details>
 <summary>7. Setup CI/CD</summary>
-*Coming soon!*
+*Coming soonS*
 </details>
