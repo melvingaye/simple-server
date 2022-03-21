@@ -1,10 +1,14 @@
 ﻿# simple-server
 
-### Setting up Express API with Swagger Auto Decumentation
+### Getting Started
+
+_Coming Soon_
+
+### Setting up Express API with Swagger Auto Documentation
 
 [_coming soon_](https://www.npmjs.com/package/@decorators/express)
 [_comming soon tsed_](https://tsed.io/tutorials/swagger.html#endpoint-documentation)
-[_coming soon tsoa_](https://github.com/lukeautry/tsoa)
+[_coming soon tsoa_](https://tsoa-community.github.io/docs/getting-started.html)
 
 ### Setting up a Node-Typescript project from scratch
 
