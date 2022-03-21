@@ -1,5 +1,11 @@
 ﻿# simple-server
 
+### Setting up Express API with Swagger Auto Decumentation
+
+[_coming soon_](https://www.npmjs.com/package/@decorators/express)
+[_comming soon tsed_](https://tsed.io/tutorials/swagger.html#endpoint-documentation)
+[_coming soon tsoa_](https://github.com/lukeautry/tsoa)
+
 ### Setting up a Node-Typescript project from scratch
 
 <details>
@@ -129,21 +135,21 @@ VI. Add linting script to package.json `"lint": "eslint --ext .js,.ts ."`
 <details>
 <summary>5. Add Commit lint</summary>
 
-_Coming Soon!_
+[_Coming Soon!_](https://github.com/conventional-changelog/commitlint)
 
 </details>
 
 <details>
 <summary>6. Add Dependabot</summary>
 
-_Coming soon!_
+[_Coming soon!_](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates)
 
 </details>
 
 <details>
 <summary>7. Add Release bot</summary>
 
-_Coming soon!_
+[_Coming soon!_](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration)
 
 </details>
 

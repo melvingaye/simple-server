@@ -1,1 +1,5 @@
-const test = '2';
+async function test() {
+	console.log('hello world');
+}
+
+test();
