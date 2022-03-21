@@ -10,6 +10,7 @@
 [_coming soon_](https://www.npmjs.com/package/@decorators/express)
 [_comming soon tsed_](https://tsed.io/tutorials/swagger.html#endpoint-documentation)
 [_coming soon tsoa_](https://tsoa-community.github.io/docs/getting-started.html)
+[_docker images_](https://www.docker.com/)
 
 ### Setting up a Node-Typescript project from scratch
 
@@ -47,33 +48,63 @@ VII. Push all changes to github.
 <details>
 <summary>2. Add Typescript</summary>
 
-I. Install typescript in the project. run `npm install -D typescript` adds typescript as a dev dependency.
-Run `npx tsc -v` to check the version that was installed.
+I. Run `npm install -D typescript` to add typescript as a dev dependency. Run `npx tsc -v` to check the version that was installed.
 
 II. Run `npx tsc --y` to init typescript config. Open the generated file and delete everything inside of "compilerOptions" **except** the first line with the link to the tsconfig documentation.
 
-III. Get the node version you're running `node -v`
+III. Get the node version you're running `node -v`, then get [tsconfig base](https://github.com/tsconfig/bases/) for your node verion, and place it outside/above the "compiletOptions" in the tsconfig file.
 
-IV. Get the [tsconfig base](https://github.com/tsconfig/bases/) for your node verion, and place it outside/above the "compiletOptions" in the tsconfig file.
-
-V. In the tsconfig file inside of "compilerOptions", add `outDir: ./dist` (this is where all js files created by the typescript compiler are placed).
-
-VI. Add `include: ["src/**/*"]` and `exclude: ["/node_modules"]` outside of the compilerOptions and add `baseUrl: './src` inside of the compilerOptions. When all these changes are made your tsconfig should look something like this.
+IV. In the tsconfig file inside of "compilerOptions", add `outDir: ./dist` (this is where all js files created by the typescript compiler are placed) and `baseUrl: './src` .
+Then add `include: ["src/**/*"]` and `exclude: ["/node_modules"]` outside of the compilerOptions. When all these changes are made your tsconfig should look something like this.
 
 ```
 {
-  "extends": "@tsconfig/node14/tsconfig.json",
-  "compilerOptions": {
-    /* Visit https://aka.ms/tsconfig.json to read more about this file */
-    "outDir": "./dist",
-    "baseUrl": "./src"
-  },
-  "include": ["src/**/*"],
-  "exclude": ["/node_modules"]
+	"extends": "@tsconfig/node14/tsconfig.json",
+	"compilerOptions": {
+		/* Visit https://aka.ms/tsconfig.json to read more about this file */
+		"outDir": "./dist",
+		"baseUrl": "./src",
+		"types": ["node"]
+	},
+	"include": ["src/**/*"],
+	"exclude": ["/node_modules"]
 }
 ```
 
-VII. Run `npm i -D ts-node` to add [ts-node](https://www.npmjs.com/package/ts-node) to bypass precompilation while developing
+V. Run `npm i -D ts-node-dev` to add [ts-node-dev](https://github.com/wclr/ts-node-dev). Run `npm i -D tsconfig-paths` to provide module resolution for tsconfig paths and launch script. Run `npm i -D nodemon` to add [nodemon](https://www.npmjs.com/package/nodemon) for hot reloading on file change and save.
+
+VI. Create a new directory `.vscode` in the root of the project and add a `launch.json` in the directory. Add the following to the launch file. Optional script to add to package.json `"dev": "./node_modules/.bin/nodemon --watch src/**/*.ts --exec ./node_modules/.bin/ts-node-dev -r tsconfig-paths/register ./src/index.ts",` (It is the same as what is in the launch file but gives the option to run from the terminal)
+
+```
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Run Server",
+			"runtimeExecutable": "${workspaceFolder}\\node_modules\\.bin\\nodemon",
+			"restart": true,
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"sourceMaps": true,
+			"smartStep": true,
+			"args": [
+				"--watch",
+				"'src/**/*.ts'",
+				"--ignore",
+				"'src/**/*.spec.ts'",
+				"--exec",
+				"./node_modules/.bin/ts-node-dev",
+				"-r",
+				"tsconfig-paths/register",
+				"${workspaceFolder}\\src\\index.ts"
+			],
+			"skipFiles": ["<node_internals>/**"]
+		}
+	]
+}
+```
 
 </details>
 
@@ -107,12 +138,11 @@ V. Also enable `autoFormatOnSave` in VSCode settings if it is not enabled, on Wi
 <details>
 <summary>4. Add Linting</summary>
 
-I. Run `npm i -D eslint` to install the linter.
+I. Run `npm i -D eslint` to install the linter that gets used to enforce coding standards.
 
 II. Add an eslint `.eslintrc` [config file](https://eslint.org/docs/user-guide/configuring/configuration-files#configuration-file-formats) to the root of your project.
 
-III. In order to use eslint with prettier some dependencies are needed, eslint prettier config and plugin. Run `npm i -D eslint-config-prettier`
-and `npm i -D eslint-plugin-prettier`.
+III. In order to use eslint with prettier some dependencies are needed, eslint prettier config and plugin. Run [`npm i -D eslint-config-prettier` [README](https://github.com/prettier/eslint-config-prettier/) and `npm i -D eslint-plugin-prettier` [README](https://github.com/prettier/eslint-plugin-prettier#recommended-configuration).
 
 IV. In order to use eslint to lint typescript there are also dependencies. Run `npm i -D @typescript-eslint/parser` and `npm i -D @typescript-eslint/eslint-plugin`.
 
@@ -140,27 +170,30 @@ VI. Add linting script to package.json `"lint": "eslint --ext .js,.ts ."`
 <details>
 <summary>5. Add Commit lint</summary>
 
-[_Coming Soon!_](https://github.com/conventional-changelog/commitlint)
+I. Run `npm i -D @commitlint/cli @commitlint/config-conventional` [commitlint](https://commitlint.js.org/#/guides-local-setup)
+
+II. Add config file commitlint.config.js in the root of the project
+
+```
+module.exports = { extends: ['@commitlint/config-conventional'] };
+```
+
+III. Add [husky](https://typicode.github.io/husky/#/) for precommit hooks `npm i -D husky` .
+
+IV. Activate/install git hooks via husky `npx husky install`
+
+V. `npx husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'`
 
 </details>
 
 <details>
-<summary>6. Add Dependabot</summary>
+<summary>6. Setup CI/CD</summary>
 
-[_Coming soon!_](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates)
-
-</details>
-
-<details>
-<summary>7. Add Release bot</summary>
-
-[_Coming soon!_](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration)
-
-</details>
-
-<details>
-<summary>8. Setup CI/CD</summary>
-
-_Coming soon!_
+1. enable precommit lint via husky and git hooks
+   _Coming soon!_
+2. Add actions for merges to main, develop,
+3. Put develop merge into main on a schedule
+4. [Add Release bot](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration)
+5. [_Add Dependabot!_](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates)
 
 </details>

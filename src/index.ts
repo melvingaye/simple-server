@@ -1,5 +1,10 @@
-async function test() {
-	console.log('hello world');
-}
+import http from 'http';
 
-test();
+const server = http.createServer((_req, res) => {
+	res.write('hello world');
+	res.end();
+});
+
+server.listen(3000, () => {
+	console.log('app running two three');
+});
