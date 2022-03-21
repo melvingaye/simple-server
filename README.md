@@ -47,7 +47,7 @@ IV. Get the [tsconfig base](https://github.com/tsconfig/bases/) for your node ve
 
 V. In the tsconfig file inside of "compilerOptions", add `outDir: ./dist` (this is where all js files created by the typescript compiler are placed).
 
-VI. Add `include: ["/src/**/*"]` and `exclude: ["/node_modules"]` outside of the compilerOptions and add `baseUrl: './src` inside of the compilerOptions. When all these changes are made your tsconfig should look something like this.
+VI. Add `include: ["src/**/*"]` and `exclude: ["/node_modules"]` outside of the compilerOptions and add `baseUrl: './src` inside of the compilerOptions. When all these changes are made your tsconfig should look something like this.
 
 ```
 {
@@ -57,10 +57,12 @@ VI. Add `include: ["/src/**/*"]` and `exclude: ["/node_modules"]` outside of the
     "outDir": "./dist",
     "baseUrl": "./src"
   },
-  "include": ["/src/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["/node_modules"]
 }
 ```
+
+VII. Run `npm i -D ts-node` to add [ts-node](https://www.npmjs.com/package/ts-node) to bypass precompilation while developing
 
 </details>
 
@@ -84,6 +86,10 @@ III. Add a prettier `.prettierrc` [config](https://prettier.io/docs/en/configura
 	"bracketSpacing": true
 }
 ```
+
+IV. Add formatting script to package.json `"format": "npx prettier --write src/**/*.ts",`
+
+V. Also enable `autoFormatOnSave` in VSCode settings if it is not enabled, on Windows press `Ctrl + ,` on Mac `Cmd + ,`.
 
 </details>
 
@@ -115,6 +121,8 @@ V. Add configuration options to the config file. It should look something like t
 	}
 }
 ```
+
+VI. Add linting script to package.json `"lint": "eslint --ext .js,.ts ."`
 
 </details>
 
