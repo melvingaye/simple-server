@@ -2,7 +2,7 @@
 
 ### Getting Started
 
-_Coming Soon_
+[_Coming Soon_](https://shields.io/)
 
 ### Setting up Express API with Swagger Auto Documentation
 
