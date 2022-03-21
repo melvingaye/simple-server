@@ -1,8 +1,9 @@
-﻿# simple-server
+﻿# Simple Server
 
 ### Getting Started
 
 [_Coming Soon_](https://shields.io/)
+[_credits_](https://github.com/microsoft/TypeScript-Node-Starter)
 
 ### Setting up Express API with Swagger Auto Documentation
 
