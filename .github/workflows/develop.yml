@@ -18,7 +18,7 @@ jobs:
             - uses: actions/checkout@v2
 
             - name: Install all dependencies
-            - run: bahmutov/npm-install@v1
+            - uses: bahmutov/npm-install@v1
 
             - name: Run the linter
             - run: npm run lint
