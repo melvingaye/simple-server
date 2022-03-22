@@ -191,18 +191,30 @@ npx --no-install commitlint --edit "$1"
 
 V. In the terminal run `git commit -m "foo: this will fail"` test to make sure commitlint works on commits
 
-VI. Run `npm i -D lint-staged` to add linting for pre-commit hooks.
+VI. Run `npm i -D lint-staged` to add [linting](https://github.com/okonet/lint-staged#examples) for pre-commit hooks. Add a `.lintstagedrc.json` file in the root of the project. Paste this into the file.
+
+```
+{
+	"*.{js,ts}": ["eslint --cache --fix"]
+}
+```
 
 </details>
 
 <details>
 <summary>6. Setup CI/CD</summary>
 
-1. enable precommit lint via husky and git hooks
-   _Coming soon!_
-2. Add actions for merges to main, develop,
-3. Put develop merge into main on a schedule
-4. [Add Release bot](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration)
-5. [_Add Dependabot!_](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates)
+1. Add actions for merges to main, and pr against develop (add branch protection for main)
+2. Put develop merge into main on a schedule
+3. [Add Release bot](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration)
+4. [_Add Dependabot!_](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates)
 
+</details>
+
+<details>
+<summary>7. Set up Docker for local development</summary>
+</details>
+
+<details>
+<summary>8. Set up UAT and prod</summary>
 </details>
