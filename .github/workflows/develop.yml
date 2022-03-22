@@ -15,13 +15,13 @@ jobs:
 
         steps:
             - name: Checkout the code
-            - uses: actions/checkout@v2
+              uses: actions/checkout@v2
 
             - name: Install all dependencies
-            - uses: bahmutov/npm-install@v1
+              uses: bahmutov/npm-install@v1
 
             - name: Run the linter
-            - run: npm run lint
+              run: npm run lint
 
     build:
         name: Build
