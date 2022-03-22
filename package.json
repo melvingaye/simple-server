@@ -11,12 +11,8 @@
 		"lint": "eslint --ext .js,.ts .",
 		"fix": "npm run lint -- --fix",
 		"dev": "./node_modules/.bin/nodemon --watch src/**/*.ts --exec ./node_modules/.bin/ts-node-dev -r tsconfig-paths/register ./src/index.ts",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"husky": {
-		"hooks": {
-			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-		}
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prepare": "husky install"
 	},
 	"author": "",
 	"license": "ISC",
@@ -30,11 +26,11 @@
 		"eslint": "^8.11.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.0.0",
-		"husky": "^7.0.4",
 		"nodemon": "^2.0.15",
 		"prettier": "^2.6.0",
 		"ts-node-dev": "^1.1.8",
 		"tsconfig-paths": "^3.14.0",
-		"typescript": "^4.6.2"
+		"typescript": "^4.6.2",
+		"husky": "^7.0.0"
 	}
 }
