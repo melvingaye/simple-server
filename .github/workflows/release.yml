@@ -1,0 +1,41 @@
+name: Release
+
+on:
+    pull_request:
+        branches: [main]
+
+jobs:
+    lint:
+        runs-on: windows-latest
+
+        steps:
+            - name: Checkout the code
+              uses: actions/checkout@v2
+
+            - name: Install all dependencies
+              uses: bahmutov/npm-install@v1
+
+            - name: Run the linter
+              run: npm run lint
+
+    build:
+        name: Build
+        needs: lint
+        runs-on: windows-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Install
+              uses: bahmutov/npm-install@v1
+
+            - name: Build
+              run: npm run build
+
+    unit_test:
+        name: Unit Test
+        needs: [lint, build]
+        runs-on: windows-latest
+        steps:
+            - name: Notify Test starting
+              run: echo running the tests now
