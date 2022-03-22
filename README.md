@@ -204,9 +204,13 @@ VI. Run `npm i -D lint-staged` to add [linting](https://github.com/okonet/lint-s
 <details>
 <summary>6. Setup CI/CD</summary>
 
-I. Add the following directory in the root of the project `.github/workflows`
+I. Create a develop branch and set it as the [default branch](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch) instead of main.
 
-II. Add `develop.yml` in the workflows directory. Configure develop to lint and run possible tests [Actions Docs](https://docs.github.com/en/actions).
+II. Add [branch protection](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule) for main.
+
+III. Add the following directory in the root of the project `.github/workflows`
+
+IV. Add `develop.yml` in the workflows directory. Configure develop to lint and run possible tests [Actions Docs](https://docs.github.com/en/actions).
 
 1. Add actions for merges to main, and pr against develop (add branch protection for main)
 2. Put develop merge into main on a schedule (once code coverage is setup)
