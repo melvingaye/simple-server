@@ -178,7 +178,7 @@ II. Add config file commitlint.config.js in the root of the project
 module.exports = { extends: ['@commitlint/config-conventional'] };
 ```
 
-III. Add [husky](https://typicode.github.io/husky/#/?id=automatic-recommended) for pre-commit hooks `npx husky-init && npm install`. This will generate a pre-commit file with `npm test` in it. You can delete or modify the contents of this file.
+III. Add [husky](https://typicode.github.io/husky/#/?id=automatic-recommended) for pre-commit hooks `npx husky-init && npm install`. This will generate a pre-commit file with `npm test` in it. Replace `npm test` with this `echo "Running lint checks..."`
 
 IV. Add the file .husky/commit-msg with no extension and paste this in there
 
@@ -190,6 +190,8 @@ npx --no-install commitlint --edit "$1"
 ```
 
 V. In the terminal run `git commit -m "foo: this will fail"` test to make sure commitlint works on commits
+
+VI. Run `npm i -D lint-staged` to add linting for pre-commit hooks.
 
 </details>
 

@@ -2,4 +2,4 @@
 . "$(dirname "$0")/_/husky.sh"
 
 echo "Running lint checks..."
-npm run lint
+npx lint-staged
