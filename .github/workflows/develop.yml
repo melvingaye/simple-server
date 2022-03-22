@@ -1,0 +1,38 @@
+# CI to control all pull requests and pushes against develop
+name: Develop
+
+on:
+    pull_request:
+        branches: [develop]
+        types: [opened, synchronize, reopened]
+
+    push:
+        branches: [develop]
+
+jobs:
+    lint:
+        runs-on: windows-latest
+
+        steps:
+            - name: Checkout the code
+            - uses: actions/checkout@v2
+
+            - name: Install all dependencies
+            - run: bahmutov/npm-install@v1
+
+            - name: Run the linter
+            - run: npm run lint
+
+    build:
+        name: Build
+        needs: lint
+        runs-on: windows-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Install
+              uses: bahmutov/npm-install@v1
+
+            - name: Build
+              run: npm run build
