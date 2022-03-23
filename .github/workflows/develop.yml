@@ -10,7 +10,7 @@ on:
         branches: [develop]
 
 jobs:
-    lint:
+    develop_lint:
         runs-on: windows-latest
 
         steps:
@@ -23,10 +23,11 @@ jobs:
             - name: Run the linter
               run: npm run lint
 
-    build:
-        name: Build
-        needs: lint
+    develop_build:
         runs-on: windows-latest
+
+        needs: develop_lint
+
         steps:
             - name: Checkout
               uses: actions/checkout@v2
