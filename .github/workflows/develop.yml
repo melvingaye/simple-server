@@ -24,9 +24,10 @@ jobs:
               run: npm run lint
 
     develop_build:
-        name: Build
-        needs: develop_lint
         runs-on: windows-latest
+
+        needs: develop_lint
+
         steps:
             - name: Checkout
               uses: actions/checkout@v2
