@@ -4,6 +4,7 @@
 
 [_Coming Soon_](https://shields.io/)
 [_credits_](https://github.com/microsoft/TypeScript-Node-Starter)
+[Project Board](https://github.com/users/melvingaye/projects/2/views/1)
 
 ### Setting up Express API with Swagger Auto Documentation
 
@@ -172,7 +173,7 @@ VI. Add linting script to package.json `"lint": "eslint --ext .js,.ts ."`
 
 I. Run `npm i -D @commitlint/cli @commitlint/config-conventional` [commitlint](https://commitlint.js.org/#/guides-local-setup)
 
-II. Add config file commitlint.config.js in the root of the project
+II. Add config file `commitlint.config.js` in the root of the project
 
 ```
 module.exports = { extends: ['@commitlint/config-conventional'] };
@@ -204,9 +205,20 @@ VI. Run `npm i -D lint-staged` to add [linting](https://github.com/okonet/lint-s
 <details>
 <summary>6. Setup CI/CD</summary>
 
-I. Add the following directory in the root of the project `.github/workflows`
+I. Create a develop branch and set it as the [default branch](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch) instead of main.
 
-II. Add `develop.yml` in the workflows directory. Configure develop to lint and run possible tests [Actions Docs](https://docs.github.com/en/actions).
+II. Add [branch protection](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule) for develop and main.
+
+On github on the repo top navigation, Click "Settings" at the top. On the left menu under "Code and automation" click "Branches".
+On the page that shows, there should be an "Add Rule" button, click that. Under the possible configurations there are two that will need to be enabled, others can be enabled at your own discretion.
+
+Enable "Require a pull request before merging" and "Dismiss stale pull request approvals when new commits are pushed" in the same section. Then enable "Require status checks to pass before merging" a search box should appear. Search for the names of the jobs created in the .yml files of the workflow actions. For example one step name from the develop.yml is "lint", add that to the check. Lastly enable "Include administrators" to prevent admins from accidental merges. Add another rule with the same settings but the branch name should be main.
+
+On github on the repo top navigation, Click "Settings" at the top. Scroll down till you see "Pull Requests" make sure the only one that is selected is "Allow squash merging" unselect the other options if they are selected.
+
+III. Add the following directory in the root of the project `.github/workflows`
+
+IV. Add `develop.yml` in the workflows directory. Configure develop to lint and run possible tests [Actions Docs](https://docs.github.com/en/actions).
 
 1. Add actions for merges to main, and pr against develop (add branch protection for main)
 2. Put develop merge into main on a schedule (once code coverage is setup)
@@ -223,4 +235,3 @@ II. Add `develop.yml` in the workflows directory. Configure develop to lint and 
 <details>
 <summary>8. Set up UAT and prod</summary>
 </details>
-```
