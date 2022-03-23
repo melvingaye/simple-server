@@ -229,7 +229,7 @@ IV. Add `develop.yml` in the workflows directory. Configure develop to lint and 
 </details>
 
 <details>
-<summary>7. Set up Docker for local development</summary>
+<summary>7. Set up Docker for local development later</summary>
 </details>
 
 <details>
