@@ -5,7 +5,7 @@ on:
         branches: [main]
 
 jobs:
-    lint:
+    release_lint:
         runs-on: windows-latest
 
         steps:
@@ -18,7 +18,7 @@ jobs:
             - name: Run the linter
               run: npm run lint
 
-    build:
+    release_build:
         name: Build
         needs: lint
         runs-on: windows-latest
@@ -32,7 +32,7 @@ jobs:
             - name: Build
               run: npm run build
 
-    unit_test:
+    release_unit_test:
         name: Unit Test
         needs: [lint, build]
         runs-on: windows-latest
