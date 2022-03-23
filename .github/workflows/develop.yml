@@ -25,7 +25,7 @@ jobs:
 
     develop_build:
         name: Build
-        needs: lint
+        needs: develop_lint
         runs-on: windows-latest
         steps:
             - name: Checkout

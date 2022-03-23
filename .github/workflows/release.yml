@@ -20,7 +20,7 @@ jobs:
 
     release_build:
         name: Build
-        needs: lint
+        needs: release_lint
         runs-on: windows-latest
         steps:
             - name: Checkout
@@ -34,7 +34,7 @@ jobs:
 
     release_unit_test:
         name: Unit Test
-        needs: [lint, build]
+        needs: [release_lint, release_build]
         runs-on: windows-latest
         steps:
             - name: Notify Test starting
