@@ -212,8 +212,6 @@ II. Add [branch protection](https://docs.github.com/en/repositories/configuring-
 On github on the repo top navigation, Click "Settings" at the top. On the left menu under "Code and automation" click "Branches".
 On the page that shows, there should be an "Add Rule" button, click that. Under the possible configurations there are two that will need to be enabled, others can be enabled at your own discretion.
 
-Enable "Require a pull request before merging" and "Dismiss stale pull request approvals when new commits are pushed" in the same section. Then enable "Require status checks to pass before merging" a search box should appear. Search for the names of the jobs created in the .yml files of the workflow actions. For example one step name from the develop.yml is "lint", add that to the check. Lastly enable "Include administrators" to prevent admins from accidental merges. Add another rule with the same settings but the branch name should be main.
-
 On github on the repo top navigation, Click "Settings" at the top. Scroll down till you see "Pull Requests" make sure the only one that is selected is "Allow squash merging" unselect the other options if they are selected.
 
 III. Add the following directory in the root of the project `.github/workflows`
